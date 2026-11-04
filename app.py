@@ -1,11 +1,10 @@
-# app.py
+import os
 
-# Simulated security incident: dummy credentials
-API_KEY = "DEMO_API_KEY_123456789"
-DB_PASSWORD = "DummyPassword123!"
+# Simulated security incident
+AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
+AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
 
 def welcome():
     return "Welcome to the application"
 
-if __name__ == "__main__":
-    print(welcome())
+print(welcome())
