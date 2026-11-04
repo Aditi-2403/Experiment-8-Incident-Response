@@ -10,7 +10,7 @@ API_KEY = os.getenv("API_KEY")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 # Compliance Rule 2: Debug mode disabled
-DEBUG = False
+DEBUG = True
 
 # Compliance Rule 3: Application logging enabled
 logging.basicConfig(
