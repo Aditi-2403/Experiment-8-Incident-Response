@@ -1,17 +1,19 @@
 
 # Experiment 8: Security Incident Response Simulation
+# Eradication: Remove hardcoded credentials
 
-# Simulated hardcoded credential for Gitleaks detection
-API_KEY = "INCIDENT_DEMO_SECRET_7F3A9C2D8E6B4A1"
+import os
 
-DB_PASSWORD = "DummyPassword123!"
+# Load credentials securely from environment variables
+API_KEY = os.getenv("API_KEY")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 def welcome():
     return "Welcome to the application"
 
 def check_credentials():
     if API_KEY and DB_PASSWORD:
-        return "Credentials are configured"
+        return "Credentials are configured securely"
     return "Credentials are missing"
 
 if __name__ == "__main__":
