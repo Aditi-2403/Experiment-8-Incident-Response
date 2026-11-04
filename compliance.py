@@ -1,27 +1,22 @@
 
-# Experiment 9: Compliance as Code
-
-import ast
-import os
+import re
 
 def check_compliance():
     violations = []
 
-    # Rule 1: Debug mode must be disabled
-    if os.getenv("DEBUG", "False").lower() == "true":
-        violations.append("Debug mode is enabled")
-
-    # Rule 2: AWS credentials must not be hardcoded
-    source_file = "app.py"
-
-    with open(source_file, "r") as file:
+    with open("app.py", "r") as file:
         source_code = file.read()
 
-    if "AKIA" in source_code:
+    # Rule 1: No hardcoded AWS access keys
+    if re.search(r"AKIA[0-9A-Z]{16}", source_code):
         violations.append("Hardcoded AWS access key detected")
 
+    # Rule 2: Debug mode must be disabled
+    if re.search(r"DEBUG\s*=\s*True", source_code):
+        violations.append("Debug mode is enabled")
+
     # Rule 3: Application logging must be enabled
-    if "logging" not in source_code:
+    if "import logging" not in source_code:
         violations.append("Application logging is not enabled")
 
     if violations:
