@@ -1,0 +1,10 @@
+
+title = "Experiment 8 Secret Detection"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "incident-demo-secret"
+description = "Detect simulated incident credential"
+regex = '''INCIDENT_DEMO_SECRET_[A-Z0-9]+'''
